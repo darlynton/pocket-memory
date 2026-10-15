@@ -1,0 +1,24 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pocket-memory
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql://darlynton:Ebubenwa1212@host.docker.internal:5432/homelab
+      AUDIO_STORAGE_DIR: /app/storage/audio
+      OBSIDIAN_VAULT_PATH: /app/storage/vault
+      DB_POOL_MAX: 5
+    extra_hosts:
+    - "host.docker.internal:host-gateway"
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./storage/audio:/app/storage/audio
+      - ./storage/vault:/app/storage/vault
+      - ./.env:/app/.env
+    restart: unless-stopped
+    
+ 

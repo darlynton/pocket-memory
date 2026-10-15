@@ -1,0 +1,7 @@
+.env
+node_modules/
+dist/
+audio.wav
+database/
+storage/
+tests/
